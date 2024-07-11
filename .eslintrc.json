@@ -1,0 +1,45 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-pascal-case": "off",
+        "newline-per-chained-call": "off",
+        "import/extensions": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "react/self-closing-comp": "off",
+        "react/jsx-closing-bracket-location": "off",
+        "@typescript-eslint/method-signature-style": ["error", "property"],
+        "@typescript-eslint/no-loop-func": "off",
+        "no-console": ["error"]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    }
+  ]
+}
